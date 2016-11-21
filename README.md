@@ -178,7 +178,7 @@ Another benefit of Python is that it can be used interpretively (kind of like th
 
 ##### Using an Interpreter
 
-The easy way to get started with Python after installing it is just to type ``python`` from the terminal/command-line. This starts the python interpreter and then you can run a command like ``2+6`` and it will interprete the code in real-time without having to explicitly run it through a compiler (like you would need to do in C or Fortran).
+The easy way to get started with Python after installing it is just to type ``python`` from the terminal/command-line. This starts the python interpreter and then you can run a command like ``2+6`` and it will interpret the code in real-time without having to explicitly run it through a compiler (like you would need to do in C or Fortran).
 ```
 (env3) adam@case:~/dylan/nlp/funlp$ python
 Python 3.5.2 (default, Sep 10 2016, 08:21:44)
@@ -209,9 +209,22 @@ pip uninstall nltk
 
 ##### Python Scripts
 
-TODO
+Python files have the extension `.py`. Create a file named `example.py` and copy the following code into it.
 
-##### Python Methods and classes
+```
+#!/usr/bin/env python
+# this first line is for Unix systems, it tells the system
+
+"""
+This is an example python script that
+
+"""
+
+See the file 'hangman.py' for a more complicated example.
+
+```
+
+##### Python Methods and Classes
 
 TODO
 
