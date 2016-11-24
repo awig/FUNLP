@@ -104,8 +104,18 @@ def generate_word():
     # add other methods to get words:
     #   * NLTK database
     #   * pull from some online source with wotd?
-    n_rand = random.randint(0,len(DEFAULT_WORDS)-1)
-    return DEFAULT_WORDS[n_rand]
+    if False:
+        n_rand = random.randint(0,len(DEFAULT_WORDS)-1)
+        return DEFAULT_WORDS[n_rand]
+
+    if True:
+        import requests
+        from lxml import html
+        # get a random word from randomword.com
+        randomword_page = requests.get('https://randomword.com/')
+        tree = html.fromstring(randomword_page.content)
+        # use xpath to get the word we want on the page
+        return tree.xpath('//div[@id="random_word"]/text()')[0]
 
 def print_congratulations(word, misses):
     """Print congratulations, you won!"""
