@@ -68,19 +68,22 @@ def get_new_letter():
     return letter
 
 
-def show_guess(guess, letter, misses):
+def show_guess(guess_word, guesses, misses):
     """This function prints the guess at each iteration."""
     # word_string = ""
     # for i in range(0,n):
+    guesses_string = ""
+    if guesses:
+        guesses_string = "".join([c+(", ") for c in guesses])
 
     print_string = """
     Word:    {}
-    Letter:  {}
     Misses:  {}
+    Guesses:  {}
 
-    """.format("".join([c+(" ") for c in guess]),
-               letter,
-               misses)
+    """.format("".join([c+(" ") for c in guess_word]),
+               misses,
+               guesses_string)
 
     print(print_string)
 
@@ -106,7 +109,7 @@ def generate_word():
     #   * pull from some online source with wotd?
     if False:
         n_rand = random.randint(0,len(DEFAULT_WORDS)-1)
-        return DEFAULT_WORDS[n_rand]
+        return (DEFAULT_WORDS[n_rand], NULL)
 
     if True:
         import requests
@@ -115,16 +118,19 @@ def generate_word():
         randomword_page = requests.get('https://randomword.com/')
         tree = html.fromstring(randomword_page.content)
         # use xpath to get the word we want on the page
-        return tree.xpath('//div[@id="random_word"]/text()')[0]
+        return (tree.xpath('//div[@id="random_word"]/text()')[0],
+                tree.xpath('//div[@id="random_word_definition"]/text()')[0])
 
-def print_congratulations(word, misses):
+def print_congratulations(word, definition, misses):
     """Print congratulations, you won!"""
     print("\n    The word is \'{}\'.".format(word))
+    print("    Its definition is \'{}\'.".format(definition))
     print("\n    Congratulations you won with {} misses!\n\n".format(misses))
 
-def print_condolences(word):
+def print_condolences(word, definition):
     """Print condolescenes."""
     print("\n    The word is \'{}\'".format(word))
+    print("    Its definition is \'{}\'.".format(definition))
     print("\n    Sorry you lost and someone died! You need more education.\n")
 
 def play_again():
@@ -143,29 +149,30 @@ def play_again():
 def main():
     # my code here
     misses = 0
-    the_word = generate_word()
-    the_guess = "_"*len(the_word)
+    guesses = []
+    (the_word, definition) = generate_word()
+    guess_word = "_"*len(the_word)
     letter = ""
     check = False
     # print hangman
     print("\n\n    LET'S PLAY A GAME!")
     while misses < NUMBER_OF_MISSES:
         draw_hangman(misses)
-        show_guess(the_guess, letter, misses)
+        show_guess(guess_word, guesses, misses)
         # update letter
-        letter = get_new_letter()
+        guesses.insert(0,get_new_letter())
         # update the guess word
-        (the_guess, miss) = update_guess(the_word, the_guess, letter)
+        (guess_word, miss) = update_guess(the_word, guess_word, guesses[0])
         # check if they won and exit
-        if not '_' in the_guess:
-            print_congratulations(the_guess, misses)
+        if not '_' in guess_word:
+            print_congratulations(guess_word, definition, misses)
             return
         # if they missed increment misses
         if miss:
             misses += 1
 
-    print_condolences(the_word)
     draw_hangman(misses)
+    print_condolences(the_word, definition)
     return
 
 
