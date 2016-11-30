@@ -15,11 +15,11 @@ import random
 # import readline
 
 # constants
-DEFAULT_WORDS = [
-    "ransom", "cheetah", "tangent", "turkey", "zebra", "astronaut", "volcano",
-    "machine", "ghost", "cosmonaut", "bizarre", "mutation", "asteroid", "paranoia",
-    "creativity", "pneumatic", "gradient", "terminator"
-]
+# DEFAULT_WORDS = [
+#     "ransom", "cheetah", "tangent", "turkey", "zebra", "astronaut", "volcano",
+#     "machine", "ghost", "cosmonaut", "bizarre", "mutation", "asteroid", "paranoia",
+#     "creativity", "pneumatic", "gradient", "terminator"
+# ]
 
 HANGMAN = """
       +----
@@ -68,7 +68,7 @@ def get_new_letter():
     return letter
 
 
-def show_guess(guess_word, guesses, misses):
+def show_guess(definition, guess_word, guesses, misses):
     """This function prints the guess at each iteration."""
     # word_string = ""
     # for i in range(0,n):
@@ -77,11 +77,13 @@ def show_guess(guess_word, guesses, misses):
         guesses_string = "".join([c+(", ") for c in guesses])
 
     print_string = """
+    The definition is \'{}\'
     Word:    {}
     Misses:  {}
     Guesses:  {}
 
-    """.format("".join([c+(" ") for c in guess_word]),
+    """.format(definition,
+               "".join([c+(" ") for c in guess_word]),
                misses,
                guesses_string)
 
@@ -118,8 +120,8 @@ def generate_word():
         randomword_page = requests.get('https://randomword.com/')
         tree = html.fromstring(randomword_page.content)
         # use xpath to get the word we want on the page
-        return (tree.xpath('//div[@id="random_word"]/text()')[0],
-                tree.xpath('//div[@id="random_word_definition"]/text()')[0])
+        return (str(tree.xpath('//div[@id="random_word"]/text()')[0]),
+                str(tree.xpath('//div[@id="random_word_definition"]/text()')[0]).strip())
 
 def print_congratulations(word, definition, misses):
     """Print congratulations, you won!"""
@@ -131,10 +133,10 @@ def print_condolences(word, definition):
     """Print condolescenes."""
     print("\n    The word is \'{}\'".format(word))
     print("    Its definition is \'{}\'.".format(definition))
-    print("\n    Sorry you lost and someone died! You need more education.\n")
+    print("\n    Sorry, you lost and someone died. Go read a book!\n")
 
 def play_again():
-    """Start again?"""
+    """Play again?"""
     answer = input("Would you like to play again [y|n]?")
     if answer[0].lower() == 'y':
         main()
@@ -155,10 +157,10 @@ def main():
     letter = ""
     check = False
     # print hangman
-    print("\n\n    LET'S PLAY A GAME!")
+    print("\n\n    Get ready for thermonuclear war!")
     while misses < NUMBER_OF_MISSES:
         draw_hangman(misses)
-        show_guess(guess_word, guesses, misses)
+        show_guess(definition, guess_word, guesses, misses)
         # update letter
         guesses.insert(0,get_new_letter())
         # update the guess word
