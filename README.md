@@ -353,7 +353,7 @@ sudo apt install git
 
 ### Cloning this repo
 
-There are a few different ways to do this, but the basic syntax is: `git clone <repo> [<dir>]`. The `<repo>` is usually the website for the project, which for GitHub projects is located on the homepage of the project. See the image below ![GitHub Cloning](https://github.com/awig/funlp/images/GitHub_cloning.png). The `[<dir>]` is the directory to which the repository will be installed, which defaults to the name of the repository. I highly recommend you leave the name the same, unless you have a very good reason to do otherwise.
+There are a few different ways to do this, but the basic syntax is: `git clone <repo> [<dir>]`. The `<repo>` is usually the website for the project, which for GitHub projects is located on the homepage of the project. See the image below ![GitHub Cloning](<https://github.com/awig/FUNLP/blob/master/images/GitHub_cloning.png>. The `[<dir>]` is the directory to which the repository will be installed, which defaults to the name of the repository. I highly recommend you leave the name the same, unless you have a very good reason to do otherwise.
 
 ### About branches
 
