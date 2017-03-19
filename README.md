@@ -307,15 +307,35 @@ TODO
 
 TODO
 
+#### Structure of a Python Package
+
+TODO
+
 #### Further Reading
 
 There is far too much to learn about Python than I can put here. Some useful references are:
 
 - TODO
 
-## Basics of Git
+## Basics of Git with GitHub
 
-Since we'll be using `git`. I'll give you the basics for using it. I will expand it as we use new features.
+Since we'll be using `git` as our version control software. I'll give you the basics for using it. I will expand it as we use new features. Basically, a version control software helps keep track of committing changes to code and helping organize those changes among multiple developers.
+
+There are other version source control tools like `svn`, `mercurial`, or whatever Team Foundation Server (Microsoft). However, git has become the de-facto standard in almost all new open source projects and all the cool kids do it :P! But practically I have found it to work really well and very helpful when merging code and keeping track of commits. It also doesn't hurt that we use Github to host all our open source code and they add a lot of nice features on top of it, such as the concept of forking (note: this is not a standard git term).
+
+### Overview of versioning
+
+One important concept to understand is that you will have a local and remote repository. Each "contributor" to a project has their own local repository where they commit and make changes while they are developing/working on the project. The remote repository (in this case hosted on GitHub) is the central location that all code from the "contributors" gets committed to in order to maintain a main repository. Multiple "contributors" are usually working the code base at any time, so it is important to keep track of all commits (versions of the code) and be able to merge them together quickly. If this is not done correctly things become a huge mess quickly! It is easier to understand with examples, but important concepts will be to understand will be _branching_, _pushing_, _pulling_, and _merging_ that help us keep things managed nicely.
+
+Fun fact Linus Torvalds, the creator of Linux, also originally designed git.
+
+### Further resources
+
+1. A simple guide to using git and a good reference to quickly find commonly used commands. <http://rogerdudler.github.io/git-guide/>
+
+2. GitHub's guides to using git and github. <https://guides.github.com/>
+
+3. CodeAcademy course for git. <https://www.codecademy.com/learn/learn-git>
 
 ### Installation
 
@@ -328,17 +348,18 @@ My recommendation is to use the solution from this website <https://git-for-wind
 Just make sure it is installed with
 
 ```
-
 sudo apt install git
 ```
 
-## Cloning this repo
+### Cloning this repo
 
-## About branches
+There are a few different ways to do this, but the basic syntax is: `git clone <repo> [<dir>]`. The `<repo>` is usually the website for the project, which for GitHub projects is located on the homepage of the project. See the image below ![GitHub Cloning](https://github.com/awig/funlp/images/GitHub_cloning.png). The `[<dir>]` is the directory to which the repository will be installed, which defaults to the name of the repository. I highly recommend you leave the name the same, unless you have a very good reason to do otherwise.
 
-## Pulling the latest commits
+### About branches
 
-## Committing to the repo
+### Pulling the latest commits
+
+### Committing to the repo
 
 # Natural Language Processing
 
