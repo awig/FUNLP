@@ -396,7 +396,7 @@ git branch
 
 There is probably only going to be the master branch shown. It is also often useful to see which remote repository each branch points to, which can be done with `git branch -vv`. It will list the latest commit as well as the name of the remote repository, which will be `origin/master`. `origin` is just the default name given to the remote repository. You can link to different remote repositories so it is often good to give them helpful names, but we won't worry about that now.
 
-A very simple idea of the workflow for branching can be found here: ![Git branching workflow](http://rogerdudler.github.io/git-guide/img/branches.png)
+A very simple idea of the workflow for branching can be found here <http://rogerdudler.github.io/git-guide/img/branches.png>.
 
 In general, you create a separate branch when you are working on a new feature (in this case _feature_x_). After you have developed and tested it, you can then _merge_ it back into the _master_ branch. It can get much more complicated, but it all boils down to these basic steps. Now let's try it out.
 
@@ -476,6 +476,12 @@ git merge dylans_feature
 # resolve conflicts here
 git push
 ```
+
+#### Pull requests on GitHub
+
+GitHub allows you to do a _pull request_ (PR for short) instead of doing a merge right away. The good point of doing PRs is so that maintainer gets notified about you wanting to merge your code and can review it before approving it. We'll use pull requests before merging big changes, as it is good practice.
+
+See <https://help.github.com/articles/creating-a-pull-request/> how to do a pull request.
 
 ### Deleting branches
 
