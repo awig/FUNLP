@@ -127,7 +127,7 @@ It will take a few seconds for the new virtual environment to be setup. There wi
 To start the virtual environment you need to run:
 
 ```
-source env3/bin/active
+source env3/bin/activate
 ```
 
 You'll notice a `(env3)` added to the beginning of your terminal prompt when you are in the virtual environment.
